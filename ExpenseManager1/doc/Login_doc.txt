@@ -1,0 +1,17 @@
+This doc is intended to understand login.java file. Login.java is used for user to get login to its account or a new user to register himself.
+It contains Usename and password field and two buttons Login and Register.
+
+Checks that need to make:
+------------------------
+
+Checks that are made:
+---------------------
+1.Username and Password can not be empty.
+2.Username and Password to be matched into database.
+
+Action on Button
+----------------
+Register: It will take you to the new window of Register.java where user can register himself.
+
+Login: If login is successful it will take you to the welcome screen with a notification of Welcome <user_name>. If Login is unsuccessful it will
+       lead you to login window again with a message popping up.

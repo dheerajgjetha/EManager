@@ -1,0 +1,22 @@
+Expense Manager
+This project is a personal project not intended to earn money. It is solely useful for learning purposes. No one will be given money for the contribution. 
+
+
+Expense Manager is a project to manage your day today life expenses done using cash, internet banking or debit card. It involves your list of accounts  and cash in your wallet with balance provided in it. You can put your expenses into it done through internet banking or debit card. You can also credit money to bank accounts. You can take out the printout of the transactions done by you within a given period or in a month. 
+
+
+Technologies Used:
+------------------
+1. MongoDb 3.2
+2. Jar Needed for MongoDb3.2.2
+3. Netbeans/Eclipse with Windowbuilder
+4. Jdk 8
+5. RoboMongo(optional)(A Gui for MongoDb).
+
+
+Version Controlling will be done by git. The git repository for this project is https://github.com/dheerajgjetha/EManager
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+MongoDb 3.2 can be dowloaded from https://www.mongodb.com/download-center?jmp=nav#community
+Eclipse with WindowBuilder...
+http://www.eclipse.org/windowbuilder/download.php.

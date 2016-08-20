@@ -1,0 +1,11 @@
+This document is intended for Welcome.java. Welcome.java is the welcome screen for the user after successful login. In the welcome screen a user can see its user name. There are currently two buttons Add Account and Remove Account and a List displaying the accounts associated with a particular user. Each time you add a account, it will update database adding a new field with account number and is displayed on the screen. Remove account is to remove account from the list and from the database. It is sole responsibility of the user to put the correct information. Assuming that he puts correct information.
+
+Following things need to be done:
+--------------------------------
+1. Create a table in the name of username which contains all the transaction associated with each account and cash.
+2. To have a total amount present to user including cash to be shown on welcome screen.
+3. With each account number in the list we need to show the amount present in it.
+4. On Double clicking the account number present in the list one should move to the new window of account. The details of Account window are shared in Account_doc.txt.
+5.An option for Cash which can also do transaction.
+6. Various wallets like paytm wallet, freecharge wallet to be added.
+7.Combined Transaction history.

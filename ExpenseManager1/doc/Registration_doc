@@ -1,0 +1,19 @@
+This doc is intended for Register.java. Register. java is useful to register a user and put his enteries into database. 
+The Register.java contains Name, Usename,Password and confirm Password fields.
+
+Checks To be made:
+------------------
+1. Name should not be empty.
+2. Name should not begin with integers.
+3. There should not be any integers in Name field.
+
+Checks That are made:
+--------------------
+1.Username are unique.
+2.Username can not be null.
+3.Password and confirm Password can not be null.
+4.Password and Confirm Password Field are Same.
+
+Action on Button
+----------------
+The Register Button will put all the field data into database and moves you to Login page. 
