@@ -1,26 +1,10 @@
 
-import javax.swing.JLabel;
 import com.mongodb.MongoClient;
-import com.mongodb.MongoException;
-import com.mongodb.WriteConcern;
-
-import static com.mongodb.client.model.Filters.*;
-import com.mongodb.DB;
-import com.mongodb.DBCollection;
-import com.mongodb.BasicDBObject;
-import com.mongodb.DBObject;
-import com.mongodb.DBCursor;
-import com.mongodb.Mongo;
-import com.mongodb.ServerAddress;
-import com.mongodb.WriteResult;
 import com.mongodb.client.FindIterable;
 import com.mongodb.client.MongoCollection;
-import com.mongodb.client.MongoCursor;
 import com.mongodb.client.MongoDatabase;
-import static com.mongodb.client.model.Updates.set;
-import java.util.Arrays;
 import javax.swing.DefaultListModel;
-import javax.swing.JOptionPane;
+import javax.swing.ListModel;
 import org.bson.Document;
 
 /*
@@ -28,42 +12,24 @@ import org.bson.Document;
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+
 /**
  *
  * @author djetha
  */
+
 public class Welcome extends javax.swing.JFrame {
 
     String unm;
-    DefaultListModel model = new DefaultListModel();
-
-    public void setData(String user_name) {
-        unm = user_name;
-    }
-
+    
     /**
      * Creates new form Welcome
      */
     public Welcome() {
         initComponents();
-       
     }
-    public void setListVal()
-    {
-         int i=1;
-        MongoClient client=new MongoClient("localhost", 27017);
-          MongoDatabase db = client.getDatabase("ExpenseManager");
-        MongoCollection<Document> reg = db.getCollection("Registration");
-        FindIterable<Document> find = reg.find(new Document("unm", unm));
-        Document doc=find.first();
-          
-        while (doc.containsKey("Account" + i)) {
-            model.addElement(doc.get("Account" + i));
-            
-            i++;
-        }
-        jList1.setModel(model);
-    }
+    
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -74,12 +40,9 @@ public class Welcome extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jList1 = new javax.swing.JList<>();
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         addMouseListener(new java.awt.event.MouseAdapter() {
@@ -88,140 +51,62 @@ public class Welcome extends javax.swing.JFrame {
             }
         });
 
-        jButton1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jButton1.setText("Remove Account");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
-            }
-        });
+        jLabel1.setFont(new java.awt.Font("Tahoma", 3, 14)); // NOI18N
 
-        jButton2.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jButton2.setText("Add Account");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
-            }
-        });
-
-        jList1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jScrollPane1.setViewportView(jList1);
-
-        jLabel1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel1.setText("List of Your Accounts");
-
-        jLabel2.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(54, 54, 54)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 237, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(33, 33, 33)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jButton2)
-                            .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(109, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton1))
-                .addGap(39, 39, 39))
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
+            .addGroup(layout.createSequentialGroup()
+                .addGap(33, 33, 33)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(67, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(7, 7, 7)
-                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 12, Short.MAX_VALUE)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addContainerGap()
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 86, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(23, 23, 23))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-public static boolean isInteger(String str) {
-        if (str == null) {
-            return false;
-        }
-        int length = str.length();
-        if (length == 0) {
-            return false;
-        }
-        int i = 0;
-        if (str.charAt(0) == '-') {
-            if (length == 1) {
-                return false;
-            }
-            i = 1;
-        }
-        for (; i < length; i++) {
-            char c = str.charAt(i);
-            if (c < '0' || c > '9') {
-                return false;
-            }
-        }
-        return true;
+
+    public void setData(String username)
+    {
+        this.unm=username;
     }
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
-
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-
-        String accno = JOptionPane.showInputDialog(this, "Enter Your Account Number");
-        if (isInteger(accno)) {
-            int value = JOptionPane.showConfirmDialog(this, "Do You Want to add Account No. " + accno);
-            if (value == 0) {
-                MongoClient client = new MongoClient("localhost", 27017);
-                DB db;
-                db = client.getDB("ExpenseManager");
-                DBCollection reg = (DBCollection) db.getCollection("Registration");
-                DBObject query = new BasicDBObject("unm", unm);
-                DBObject update = new BasicDBObject();
-
-                DBCursor find = reg.find(query);
-                while (find.hasNext()) {
-                    DBObject next = find.next();
-                    int count = 1;
-                    for (int i = 1; i <= 5; i++) {
-                        String str="Account"+i;
-                        System.out.println(str);
-                        if (!(next.containsField(str))) {
-                            update.put("$set",new BasicDBObject(str, accno));
-                            WriteResult result=reg.update(query, update);
-                            //DefaultListModel m=new DefaultListModel();
-                            model.addElement(accno);
-                            jList1.setModel(model);
-                           DBCollection coll=db.createCollection(accno.toString(),null);
-                            break;
-                        }
-                    }
-                }
-
-            }
-           
-        } else {
-            JOptionPane.showMessageDialog(this, "You Entered a wrong Number");
+     public void setListVal()
+    {
+         int i=1;
+        MongoClient client=new MongoClient("localhost", 27017);
+          MongoDatabase db = client.getDatabase("ExpenseManager");
+        MongoCollection<Document> reg = db.getCollection("Registration");
+        FindIterable<Document> find = reg.find(new Document("unm", unm));
+        Document doc=find.first();
+        DefaultListModel model;
+    model=new DefaultListModel();
+        while (doc.containsKey("Account" + i)) {
+            model.addElement(doc.get("Account" + i));
+            
+            i++;
         }
+        jList1.setModel(model);
+    }
         
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton2ActionPerformed
-
     private void formMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMouseEntered
-        jLabel2.setText("Welcome " + unm);        // TODO add your handling code here:
+    jLabel1.setText("Welcome "+unm);
+    
+    // TODO add your handling code here:
     }//GEN-LAST:event_formMouseEntered
 
     /**
@@ -255,18 +140,13 @@ public static boolean isInteger(String str) {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new Welcome().setVisible(true);
-
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JList<String> jList1;
     private javax.swing.JScrollPane jScrollPane1;
     // End of variables declaration//GEN-END:variables
-
 }
