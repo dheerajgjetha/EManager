@@ -221,9 +221,11 @@ public class Register extends javax.swing.JFrame {
              reg.insertOne(ins);
              System.out.println("Document is inserted into MongoDb");
              System.out.println(pass);
+             db.createCollection(unm);
              this.dispose();
              login lgn=new login();
              lgn.setVisible(true);
+             
              
              
              

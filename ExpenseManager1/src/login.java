@@ -198,6 +198,7 @@ this.dispose();// TODO add your handling code here:
             wl.setVisible(true);
             wl.setData(unm);
             wl.setListVal();
+            
         }
         else
         {

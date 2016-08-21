@@ -1,0 +1,138 @@
+String accno = JOptionPane.showInputDialog(this, "Enter Your Account Number");
+        if (isInteger(accno)) {
+            int value = JOptionPane.showConfirmDialog(this, "Do You Want to add Account No. " + accno);
+            if (value == 0) {
+                MongoClient client = new MongoClient("localhost", 27017);
+                DB db;
+                db = client.getDB("ExpenseManager");
+                DBCollection reg = (DBCollection) db.getCollection("Registration");
+                DBObject query = new BasicDBObject("unm", unm);
+                DBObject update = new BasicDBObject();
+
+                DBCursor find = reg.find(query);
+                while (find.hasNext()) {
+                    DBObject next = find.next();
+                    int count = 1;
+                    for (int i = 1; i <= 5; i++) {
+                        String str="Account"+i;
+                        System.out.println(str);
+                        if (!(next.containsField(str))) {
+                            update.put("$set",new BasicDBObject(str, accno));
+                            WriteResult result=reg.update(query, update);
+                            //DefaultListModel m=new DefaultListModel();
+                            model.addElement(accno);
+                            jList1.setModel(model);
+                           DBCollection coll=db.createCollection(accno.toString(),null);
+                            break;
+                        }
+                    }
+                }
+
+            }
+           
+        } else {
+            JOptionPane.showMessageDialog(this, "You Entered a wrong Number");
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+public static boolean isInteger(String str) {
+        if (str == null) {
+            return false;
+        }
+        int length = str.length();
+        if (length == 0) {
+            return false;
+        }
+        int i = 0;
+        if (str.charAt(0) == '-') {
+            if (length == 1) {
+                return false;
+            }
+            i = 1;
+        }
+        for (; i < length; i++) {
+            char c = str.charAt(i);
+            if (c < '0' || c > '9') {
+                return false;
+            }
+        }
+        return true;
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    public void setListVal()
+    {
+         int i=1;
+        MongoClient client=new MongoClient("localhost", 27017);
+          MongoDatabase db = client.getDatabase("ExpenseManager");
+        MongoCollection<Document> reg = db.getCollection("Registration");
+        FindIterable<Document> find = reg.find(new Document("unm", unm));
+        Document doc=find.first();
+          
+        while (doc.containsKey("Account" + i)) {
+            model.addElement(doc.get("Account" + i));
+            
+            i++;
+        }
+        jList1.setModel(model);
+    }
+        }
